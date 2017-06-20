@@ -18,7 +18,7 @@
 			<input type="text" v-model="companySize" class="form-control" placeholder="Company size">
 		</div>
 		<div class="form-group">
-			<router-link v-if="true" to="/questions/1" class="btn btn-info">Submit</router-link>
+			<router-link v-if="isValid" to="/questions/1" class="btn btn-info">Submit</router-link>
 		</div>
 		<p>{{ this.store.details }}</p>
 	</div>
@@ -39,6 +39,11 @@
 				email: store.details.email,
 				companyName: store.details.companyName,
 				companySize: store.details.companySize,
+			}
+		},
+		computed: {
+			isValid: function() {
+				return (this.firstName != null && this.firstName != '' && this.lastName != null && this.lastName != '' && this.email != null && this.email != '' && this.companyName != null && this.companyName != '' && this.companySize != null && this.companySize != '');
 			}
 		},
 		watch: {
